@@ -49,15 +49,29 @@ int main()
     }
 
     // Play the game
-    cout << "Guess the word: " << endl;
-    string guess;
-    cin >> guess;
-    while (guess != word)
+    string guess = "";
+    int numGuesses = 0;
+    while (guess != word && numGuesses < 5)
     {
-        cout << "Incorrect. Guess again: " << endl;
+        // Display the word as underscores
+        for (int i = 0; i < word.length(); i++)
+        {
+            cout << "_ ";
+        }
+        cout << endl;
+        cout << "Guess the word: " << endl;
         cin >> guess;
+        numGuesses++;
     }
-    cout << "Correct! The word was: " << word << endl;
+
+    if (guess == word)
+    {
+        cout << "Correct! The word was: " << word << endl;
+    }
+    else
+    {
+        cout << "You have exceeded the maximum number of guesses. The word was: " << word << endl;
+    }
 
     return 0;
 }
